@@ -1,5 +1,7 @@
 package module;
 
+// Classe qui implémente la grille et son marquage
+
 import java.util.*;
 
 public class GrilleLoto {
@@ -47,13 +49,14 @@ public class GrilleLoto {
         }
     }
 
-    public GrilleLoto(int[][] nums,String nomGrille) {
+    public GrilleLoto(int[][] nums, String nomGrille) {
         this.nom = nomGrille;
-        this.nbLignes = nums.length;
-        this.nbColonnes = nums[0].length;
+        this.nbLignes = 3;
+        this.nbColonnes = 9;
 
-
+        this.grille = new int[nbLignes][nbColonnes];
         this.marques = new boolean[nbLignes][nbColonnes];
+        initialiserCarton();
     }
 
     /**
@@ -213,7 +216,7 @@ public class GrilleLoto {
                             }
                         }
 
-                        if (! colonnesAvecNombres.isEmpty()) {
+                        if (!colonnesAvecNombres.isEmpty()) {
                             int colARemplacer = colonnesAvecNombres.get(random.nextInt(colonnesAvecNombres.size()));
 
                             // Générer un nouveau nombre pour la colonne vide
@@ -270,8 +273,7 @@ public class GrilleLoto {
 
                         grille[ligne][col] = min + random.nextInt(max - min + 1);
                     }
-                }
-                else {
+                } else {
                     // Retirer des nombres en excès
                     List<Integer> colonnesAvecNombres = new ArrayList<>();
                     for (int col = 0; col < nbColonnes; col++) {
@@ -335,7 +337,7 @@ public class GrilleLoto {
      */
     public boolean estGrilleComplete() {
         for (int i = 0; i < this.nbLignes; i++) {
-            if (! this.estLigneComplete(i)) {
+            if (!this.estLigneComplete(i)) {
                 return false;
             }
         }
@@ -364,7 +366,7 @@ public class GrilleLoto {
         if (ligne >= 0 && ligne < nbLignes && colonne >= 0 && colonne < nbColonnes) {
             return grille[ligne][colonne];
         }
-        return - 1; // Valeur invalide
+        return -1; // Valeur invalide
     }
 
     /**

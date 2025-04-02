@@ -1,15 +1,17 @@
 package module;
 
-// Classe principale pour gérer le simulateur de loto
+// Classe de simulation avec la console
+
 import java.util.*;
 
 public class SimulateurLoto {
     private List<GrilleLoto> grilles;
     private List<Integer> numerosTires;
-    private int valeurMax;
+    private final int valeurMax;
 
     /**
      * Constructeur pour le simulateur de loto
+     *
      * @param valeurMax La valeur maximale des numéros possibles
      */
     public SimulateurLoto(int valeurMax) {
@@ -20,10 +22,10 @@ public class SimulateurLoto {
 
     /**
      * Ajoute une nouvelle grille au simulateur
-     * @param nbLignes Nombre de lignes de la grille
+     *
+     * @param nbLignes   Nombre de lignes de la grille
      * @param nbColonnes Nombre de colonnes de la grille
-     * @param nomGrille Nom de la grille
-     * @return La grille créée
+     * @param nomGrille  Nom de la grille
      */
     public void creerGrille(int nbLignes, int nbColonnes, String nomGrille) {
         GrilleLoto grille = new GrilleLoto(nbLignes, nbColonnes, nomGrille);
@@ -41,9 +43,9 @@ public class SimulateurLoto {
     }
 
     public void creerCarton(int[][] maGrille, String nomGrille) {
-        if (maGrille.length != 3 || maGrille[0].length != 9 || maGrille[1].length != 9 || maGrille[2].length != 9) {
-            System.out.println("Erreur de grille");
-        }
+//        if (maGrille.length != 3 || maGrille[0].length != 5 || maGrille[1].length != 5 || maGrille[2].length != 5) {
+//            System.out.println("Erreur de grille");
+//        }
         GrilleLoto grille = new GrilleLoto(maGrille, nomGrille);
         grilles.add(grille);
     }
@@ -51,6 +53,7 @@ public class SimulateurLoto {
 
     /**
      * Tire un nouveau numéro aléatoire
+     *
      * @return Le numéro tiré ou -1 si tous les numéros ont été tirés
      */
     public int tirerNumero() {
@@ -75,6 +78,7 @@ public class SimulateurLoto {
 
     /**
      * Marque un numéro sur toutes les grilles
+     *
      * @param numero Le numéro à marquer
      */
     public void marquerNumeroSurToutesLesGrilles(int numero) {
@@ -87,7 +91,6 @@ public class SimulateurLoto {
 
     /**
      * Vérifie si une des grilles a une ligne complète
-     * @return true si au moins une grille a une ligne complète
      */
     public boolean verifierLignesCompletes() {
         for (int i = 0; i < grilles.size(); i++) {
@@ -104,6 +107,7 @@ public class SimulateurLoto {
 
     /**
      * Vérifie si une des grilles est complète
+     *
      * @return true si au moins une grille est complète
      */
     public boolean verifierGrillesCompletes() {
@@ -172,7 +176,7 @@ public class SimulateurLoto {
 
         // Simuler quelques tirages
         System.out.println("\nDébut des tirages:");
-        for (int i = 0; i < 15; i++) {
+        for (int i = 0; i < 70; i++) {
             int numero = simulateur.tirerNumero();
             if (numero == -1) {
                 System.out.println("Tous les numéros ont été tirés.");
@@ -180,9 +184,13 @@ public class SimulateurLoto {
             }
 
             // Vérifier après chaque tirage
-            simulateur.verifierLignesCompletes();
+            if (simulateur.verifierLignesCompletes()) {
+                System.out.println("Nous avons un gagnant! (ligne)");
+                break;
+            }
+
             if (simulateur.verifierGrillesCompletes()) {
-                System.out.println("Nous avons un gagnant!");
+                System.out.println("Nous avons un gagnant! (grille)");
                 break;
             }
         }
