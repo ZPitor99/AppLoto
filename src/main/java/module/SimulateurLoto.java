@@ -33,7 +33,7 @@ public class SimulateurLoto {
     }
 
     /**
-     * Ajoute une nouvelle grille au simulateur
+     * Ajoute une nouvelle grille au simulateur (grille de loto)
      *
      * @param nomGrille Nom de la grille
      */
@@ -43,9 +43,18 @@ public class SimulateurLoto {
     }
 
     public void creerCarton(int[][] maGrille, String nomGrille) {
-//        if (maGrille.length != 3 || maGrille[0].length != 5 || maGrille[1].length != 5 || maGrille[2].length != 5) {
-//            System.out.println("Erreur de grille");
-//        }
+        boolean formatValide = maGrille != null && maGrille.length == 3;
+        if (formatValide) {
+            for (int i = 0; i < 3; i++) {
+                if (maGrille[i] == null || maGrille[i].length != 5) {
+                    formatValide = false;
+                    break;
+                }
+            }
+        }
+        if (!formatValide) {
+            System.out.println("Erreur de grille");
+        }
         GrilleLoto grille = new GrilleLoto(maGrille, nomGrille);
         grilles.add(grille);
     }

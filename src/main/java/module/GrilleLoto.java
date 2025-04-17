@@ -12,7 +12,7 @@ public class GrilleLoto {
     private final int nbColonnes;
 
     /**
-     * Constructeur pour une grille de loto avec dimensions spécifiées
+     * Constructeur pour une grille de loto avec les dimensions donnees
      *
      * @param nbLignes   Nombre de lignes de la grille
      * @param nbColonnes Nombre de colonnes de la grille
@@ -32,8 +32,8 @@ public class GrilleLoto {
      * Constructeur pour une grille de loto avec format spécifique (3 lignes, 9 colonnes)
      * Format spécifique correspond à un carton de loto
      *
-     * @param nomGrille        Nom de la grille
-     * @param formatSpecifique Si true, utilise le format spécifique (3 lignes x 5 nombres)
+     * @param nomGrille        Nom de la grille.
+     * @param formatSpecifique Si true, utilise le format spécifique (3 lignes x 5 nombres).
      */
     public GrilleLoto(String nomGrille, boolean formatSpecifique) {
         this.nom = nomGrille;
@@ -49,6 +49,13 @@ public class GrilleLoto {
         }
     }
 
+    /**
+     * Constructeur pour une grille de loto avec format spécifique (3 lignes, 9 colonnes)
+     * Format spécifique correspond à un carton de loto
+     *
+     * @param nums             Tableau à deux dimensions des numéros de la grille à créer.
+     * @param nomGrille        Nom de la grille.
+     */
     public GrilleLoto(int[][] nums, String nomGrille) {
         this.nom = nomGrille;
         this.nbLignes = 3;
@@ -56,7 +63,7 @@ public class GrilleLoto {
 
         this.grille = new int[nbLignes][nbColonnes];
         this.marques = new boolean[nbLignes][nbColonnes];
-        initialiserCarton();
+        initialiserCarton(nums);
     }
 
     /**
@@ -93,7 +100,7 @@ public class GrilleLoto {
      * - Colonne avec au moins un nombre
      */
     private void initialiserCarton() {
-        // Réinitialiser la grille
+        // Mise à zéro
         for (int i = 0; i < nbLignes; i++) {
             for (int j = 0; j < nbColonnes; j++) {
                 grille[i][j] = 0;
@@ -289,6 +296,31 @@ public class GrilleLoto {
                         grille[ligne][col] = 0;
                     }
                 }
+            }
+        }
+    }
+
+    /**
+     * Initialise la grille avec les nombres nums.
+     * Parcours par ligne
+     * Complexité temporelle est de O(n*m)
+     * Pour un carton de loto
+     * - Ligne de cinq nombres
+     * - Colonne avec au moins un nombre
+     *
+     * @param nums tableau à deux dimensions avec les nombres à insérer dans la grille.
+     */
+    private void initialiserCarton(int[][] nums) {
+        //Mise à zéro
+        for (int ligne = 0, col = 0; ligne <nbLignes; ligne++) {
+            grille[ligne][col] = 0;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums[i].length; j++) {
+                int valeur = nums[i][j];
+                int dizaine = valeur / 10;
+                grille[i][dizaine] = valeur;
             }
         }
     }
