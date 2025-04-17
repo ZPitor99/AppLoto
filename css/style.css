@@ -1,0 +1,9 @@
+.root {
+    -fx-padding: 15px;
+    -fx-background-color: Linen;
+}
+
+.scroll-pane {
+    -fx-background: ghostwhite;
+    -fx-border-color: #5F9EA0;
+}

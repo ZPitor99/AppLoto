@@ -2,14 +2,17 @@ package module;
 
 // Classe qui implémente la grille et son marquage
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class GrilleLoto {
-    private String nom;
-    private int[][] grille;        // Tableau 2D pour représenter la grille
-    private boolean[][] marques;   // Tableau 2D pour suivre les numéros cochés
     private final int nbLignes;
     private final int nbColonnes;
+    private final String nom;
+    private final int[][] grille;        // Tableau 2D pour représenter la grille
+    private final boolean[][] marques;   // Tableau 2D pour suivre les numéros cochés
 
     /**
      * Constructeur pour une grille de loto avec les dimensions donnees
@@ -53,14 +56,13 @@ public class GrilleLoto {
      * Constructeur pour une grille de loto avec format spécifique (3 lignes, 9 colonnes)
      * Format spécifique correspond à un carton de loto
      *
-     * @param nums             Tableau à deux dimensions des numéros de la grille à créer.
-     * @param nomGrille        Nom de la grille.
+     * @param nums      Tableau à deux dimensions des numéros de la grille à créer.
+     * @param nomGrille Nom de la grille.
      */
     public GrilleLoto(int[][] nums, String nomGrille) {
         this.nom = nomGrille;
         this.nbLignes = 3;
         this.nbColonnes = 9;
-
         this.grille = new int[nbLignes][nbColonnes];
         this.marques = new boolean[nbLignes][nbColonnes];
         initialiserCarton(nums);
@@ -223,7 +225,7 @@ public class GrilleLoto {
                             }
                         }
 
-                        if (!colonnesAvecNombres.isEmpty()) {
+                        if (! colonnesAvecNombres.isEmpty()) {
                             int colARemplacer = colonnesAvecNombres.get(random.nextInt(colonnesAvecNombres.size()));
 
                             // Générer un nouveau nombre pour la colonne vide
@@ -312,10 +314,11 @@ public class GrilleLoto {
      */
     private void initialiserCarton(int[][] nums) {
         //Mise à zéro
-        for (int ligne = 0, col = 0; ligne <nbLignes; ligne++) {
+        for (int ligne = 0, col = 0; ligne < nbLignes; ligne++) {
             grille[ligne][col] = 0;
         }
 
+        // Mise à la position adéquate
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < nums[i].length; j++) {
                 int valeur = nums[i][j];
@@ -369,7 +372,7 @@ public class GrilleLoto {
      */
     public boolean estGrilleComplete() {
         for (int i = 0; i < this.nbLignes; i++) {
-            if (!this.estLigneComplete(i)) {
+            if (! this.estLigneComplete(i)) {
                 return false;
             }
         }
@@ -398,7 +401,7 @@ public class GrilleLoto {
         if (ligne >= 0 && ligne < nbLignes && colonne >= 0 && colonne < nbColonnes) {
             return grille[ligne][colonne];
         }
-        return -1; // Valeur invalide
+        return - 1; // Valeur invalide
     }
 
     /**
