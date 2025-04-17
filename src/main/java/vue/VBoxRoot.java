@@ -36,7 +36,7 @@ public class VBoxRoot extends VBox {
         });
 
         // Ajouter les éléments au VBox principal
-        this.getChildren().addAll(ajouterGrilleBtn, scrollPane);
+        this.getChildren().addAll(scrollPane, ajouterGrilleBtn);
 
         // Définir les marges et espacements
         this.setPadding(new Insets(15));
@@ -72,6 +72,7 @@ public class VBoxRoot extends VBox {
                 champNumero.setPrefWidth(50);
                 champNumero.setMaxWidth(50);
                 champNumero.setPromptText("N°");
+                champNumero.setStyle("-fx-focus-color: #3c5a73;");
 
                 // Limiter la saisie à 2 chiffres seulement
                 champNumero.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -91,8 +92,12 @@ public class VBoxRoot extends VBox {
         HBox boutons = new HBox(15);
         boutons.setAlignment(Pos.CENTER);
 
+        Button btnAleatoire = new Button("Aleatoire");
+        btnAleatoire.setStyle("-fx-focus-color: #3c5a73;");
         Button btnValider = new Button("Valider");
+        btnValider.setStyle("-fx-focus-color: #3c5a73;");
         Button btnAnnuler = new Button("Annuler");
+        btnAnnuler.setStyle("-fx-focus-color: #3c5a73;");
 
         btnAnnuler.setOnAction(e -> popup.close());
 
@@ -125,7 +130,11 @@ public class VBoxRoot extends VBox {
             }
         });
 
-        boutons.getChildren().addAll(btnValider, btnAnnuler);
+        btnAleatoire.setOnAction(e -> {
+            //Aleatory
+        });
+
+        boutons.getChildren().addAll(btnValider, btnAnnuler, btnAleatoire);
 
         popupRoot.getChildren().addAll(titreLabel, gridSaisie, boutons);
 

@@ -2,9 +2,11 @@ package vue;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.util.Objects;
 
 public class ApplicationLoto extends Application {
 
@@ -17,6 +19,7 @@ public class ApplicationLoto extends Application {
         stage.setResizable(false);
         File css = new File("css" + File.separator + "style.css");
         scene.getStylesheets().add(css.toURI().toString());
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/icon.png"))));
         stage.show();
     }
 

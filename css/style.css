@@ -1,6 +1,6 @@
 /* ===========================
    Style fait par IA dans un
-    permier temps -> a finir
+    premier temps -> a finir
    =========================== */
 
 /* Style général */
@@ -40,7 +40,8 @@
 
 /* Bouton supprimer (secondaire) */
 .button:focused {
-    -fx-background-color: #3c3c3c;
+    -fx-focus-color: #2c3e50;
+    -fx-faint-focus-color: transparent;
 }
 
 /* Conteneur d'une grille */
@@ -78,4 +79,24 @@
 /* Message d'erreur */
 .label:filled {
     -fx-text-fill: red;
+}
+
+.text-field:focused {
+    -fx-focus-color: #3c5a73;
+    -fx-faint-focus-color: #3c5a73;
+}
+
+.text-area:focused {
+    -fx-focus-color: #3c5a73;
+    -fx-faint-focus-color: #3c5a73;
+}
+
+.button:focused {
+    -fx-focus-color: #3c5a73;
+    -fx-faint-focus-color: #3c5a73;
+}
+
+.scroll-pane:focused {
+    -fx-focus-color: #3c5a73;
+    -fx-faint-focus-color: #3c5a73;
 }
