@@ -1,9 +1,81 @@
+/* ===========================
+   Style fait par IA dans un
+    permier temps -> a finir
+   =========================== */
+
+/* Style général */
 .root {
-    -fx-padding: 15px;
-    -fx-background-color: Linen;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-background-color: #f9f9f9;
 }
 
-.scroll-pane {
-    -fx-background: ghostwhite;
-    -fx-border-color: #5F9EA0;
+/* Titre popup */
+.label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+/* Titre principal de la grille */
+.grille-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2c3e50;
+}
+
+/* Boutons généraux */
+.button {
+    -fx-background-color: #4f4f4f;
+    -fx-text-fill: white;
+    -fx-padding: 8px 16px;
+    -fx-background-radius: 8px;
+    -fx-font-weight: normal;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+    -fx-border-radius: 8px;
+}
+
+.button:hover {
+    -fx-background-color: #3c3c3c;
+}
+
+/* Bouton supprimer (secondaire) */
+.button:focused {
+    -fx-background-color: #3c3c3c;
+}
+
+/* Conteneur d'une grille */
+.grille-loto {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #dcdcdc;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 5, 0.0, 0, 2);
+}
+
+/* Étiquettes des numéros */
+.label-numero {
+    -fx-padding: 10px;
+    -fx-background-color: #e0e0e0;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-alignment: center;
+    -fx-font-weight: bold;
+}
+
+/* Champs de texte (numéros) */
+.text-field {
+    -fx-pref-width: 50px;
+    -fx-max-width: 50px;
+    -fx-alignment: center;
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Message d'erreur */
+.label:filled {
+    -fx-text-fill: red;
 }
