@@ -53,6 +53,17 @@ public class VBoxRoot extends VBox {
         popupRoot.setPadding(new Insets(20));
         popupRoot.setAlignment(Pos.CENTER);
 
+        Label nomLabel = new Label("Saisissez le nom de votre grille");
+        nomLabel.setStyle("-fx-font-size: 14px; -fx-font-weight: bold;");
+        popupRoot.getChildren().addAll(nomLabel);
+
+        TextField nomGrille = new TextField();
+        nomGrille.setAlignment(Pos.CENTER);
+        nomGrille.setPrefWidth(200);
+        nomGrille.setMaxWidth(200);
+        nomGrille.setPromptText("Nom de la grille");
+        popupRoot.getChildren().addAll(nomGrille);
+
         Label titreLabel = new Label("Saisissez les numéros de votre grille");
         titreLabel.setStyle("-fx-font-size: 16px; -fx-font-weight: bold;");
 

@@ -43,7 +43,7 @@ public class SimulateurLoto {
         GrilleLoto grille = new GrilleLoto(nomGrille, true);
         grilles.add(grille);
     }
-
+/*
     public static void main(String[] args) {
         // Exemple d'utilisation
         SimulateurLoto simulateur = new SimulateurLoto(90); // Loto avec des numéros de 1 à 90
@@ -86,6 +86,8 @@ public class SimulateurLoto {
         System.out.println("\nÉtat final des grilles:");
         simulateur.afficherToutesLesGrilles();
     }
+
+ */
 
     public void creerCarton(int[][] maGrille, String nomGrille) {
         boolean formatValide = maGrille != null && maGrille.length == 3;
